@@ -52,3 +52,21 @@ class DataIngestion:
         except Exception as e:
             raise AppException(e, sys)
         
+    
+    def initiate_data_ingestion(self)-> DataIngestionArtifact:
+        logging.info("Entered initiate_data_ingestion method of Data_Ingestion class")
+        try:
+            zip_file_path = self.download_data()
+            feature_store_path = self.extract_zip_file(zip_file_path)
+            data_ingestion_artifact = DataIngestionArtifact(data_zip_file_path = zip_file_path,
+                                                            feature_store_path = feature_store_path)
+            logging.info("Exited initiate_data_ingestion method of Data_Ingestion class")
+            logging.info(f"Data ingestion artifact created: {data_ingestion_artifact}")
+
+            return data_ingestion_artifact
+        except Exception as e:
+            raise AppException(e, sys) from e
+
+
+
+    
