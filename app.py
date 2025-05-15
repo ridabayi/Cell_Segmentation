@@ -58,8 +58,10 @@ def predictRoute():
 
 if __name__ == "__main__":
     clApp = ClientApp()
+    print(f"Application running at: http://localhost:{APP_PORT}/")
     app.run(host=APP_HOST, port=APP_PORT)
-    app.run(host='0.0.0.0', port=80) #for AZURE
+
+    #app.run(host='0.0.0.0', port=80) #for AZURE
 
 
 
